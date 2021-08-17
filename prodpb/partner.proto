@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+package prod;
+option go_package = "prodpb";
+
+
+message Partner {
+    int32 id = 1;
+    string name = 2;
+    double openBal = 3;
+    double currBal = 4;
+    string contactNo = 5;
+    string details = 6;
+}
+
+message PartnerId{
+    int32 id = 1;
+}
+
+
+message Partners{
+    repeated Partner myPartners = 1;
+}
+
+message GetPartnerRequest{}
+message DelPartnerResponse{}
+
+
+service PartnerService {
+    rpc AddPartner(Partner) returns (PartnerId) {};
+    rpc GetPartners(GetPartnerRequest) returns (Partners) {};
+    rpc DeletePartner(PartnerId) returns (DelPartnerResponse) {};
+    rpc UpdatePartner(Partner) returns (DelPartnerResponse) {};
+}

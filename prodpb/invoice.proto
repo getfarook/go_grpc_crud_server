@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+package prod;
+option go_package = "prodpb";
+
+import "google/protobuf/timestamp.proto";
+
+message InvoiceLine{
+    int32 id = 1;
+    int32 inv_id = 2;
+    int32 product_id = 3;
+    string name = 4;
+    double qty = 5;
+    double price = 6;
+    double lineAmount = 7; 
+}
+
+message Invoice {
+    int32 id = 1;
+    string invoiceNo = 2;
+    int32 partnerId = 3;
+    google.protobuf.Timestamp  invDate = 4;
+    repeated InvoiceLine invLines = 5;
+    double invAmount = 6;
+}
+
+message InvoiceId {
+    int32 id = 1;
+    int32 invoiceNo = 2;
+}
+
+message Invoices {
+    repeated Invoice myInvoices = 1;
+}
+
+message GetInvoiceRequest{}
+message DelInvoiceResponse{}
+
+service InvoiceService {
+    rpc AddInvoice(Invoice) returns (InvoiceId) {};
+   // rpc GetInvoices(GetInvoiceRequest) returns (Invoices) {};
+   // rpc DeleteInvoie(InvoiceId) returns (DelInvoiceResponse) {};
+   // rpc UpdateInvoice(Invoice) returns (DelInvoiceResponse) {};
+}
