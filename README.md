@@ -2,9 +2,9 @@ Overview:
 -------------------------
 This is a golang backend project based on gRPC protocol. It does CRUD operations for two models, partner and product. Invoice part is incomplete.
 
-The front end for this project is done using flutter project. The front end flutter project repository name is "flutter_grpc_crud". 
+The front end for this project is done using flutter project. The flutter front end project for this server is located in the below repository
 
-
+https://github.com/getfarook/flutter_grpc_crud.git
 
 Database used:
 ---------------------------
